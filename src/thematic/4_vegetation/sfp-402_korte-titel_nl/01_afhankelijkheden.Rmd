@@ -1,6 +1,0 @@
-# Afhankelijkheden (Indien van toepassing)
-
-<!--
-Procedures waarnaar in deze procedure verwezen wordt: bv SIP_xxx
-Procedures die verwijzen naar deze procedure: bv SVP_xxx
--->
