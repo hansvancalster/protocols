@@ -30,7 +30,7 @@ write(x =  "- [2020.01](https://protocols.inbo.io/2020.01/nl/index.html)
       append = TRUE)
 
 #debugonce(protocolhelper:::render_release)
-protocolhelper:::render_release(version_number = "2020.01")
+protocolhelper:::render_release()
 
 
 
@@ -77,5 +77,32 @@ write(x =  "- [2020.02](https://protocols.inbo.io/2020.02/en/index.html)
       append = TRUE)
 
 #debugonce(protocolhelper:::render_release)
-protocolhelper:::render_release(version_number = "2020.02")
+protocolhelper:::render_release()
+
+
+
+
+###################################################################
+
+create_spp(title = "title", 
+           subtitle = "", 
+           short_title = "my-protocol", 
+           authors = c("Jef Beton", "Jos Plastiek"), 
+           date = Sys.Date(), 
+           reviewers = c("reviewer1, reviewer2"), 
+           file_manager = "manager",
+           project_name = "mne",
+           version_number = "2021.01",
+           render = FALSE)
+# first adjust NEWS.Rmd
+
+write(x =  "- [2021.01](https://protocols.inbo.io/2021.01/nl/index.html)
+  - Eerste versie van het protocol",  
+      file = find_root_file("src/project/mne/spp-001_my-protocol_nl/NEWS.Rmd",
+                            criterion = is_git_root),
+      append = TRUE)
+
+protocolhelper:::render_release()
+
+
 
