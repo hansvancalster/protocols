@@ -7,6 +7,12 @@ path_to_from_docx <- file.path(git_root, "from_docx")
 
 #debugonce(create_sfp)
 
+fs::dir_delete(find_root_file("publish", criterion = is_git_root))
+fs::dir_delete(find_root_file("docs/project", criterion = is_git_root))
+fs::dir_delete(find_root_file("docs/thematic", criterion = is_git_root))
+fs::dir_delete(find_root_file("src/thematic", criterion = is_git_root))
+fs::dir_delete(find_root_file("src/project", criterion = is_git_root))
+
 create_sfp(title = "titel van het protocol",
            subtitle = "optionele subtitel", 
            short_title = "korte titel",
