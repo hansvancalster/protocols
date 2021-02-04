@@ -31,7 +31,7 @@ create_sfp(title = "titel van het protocol",
 
 write(x =  "- [2020.01](https://protocols.inbo.io/2020.01/nl/index.html)
   - Eerste versie van het protocol",  
-      file = find_root_file("src/thematic/4_vegetation/sfp-401_korte-titel_nl/NEWS.Rmd",
+      file = find_root_file("src/thematic/4_vegetation/sfp-401-nl_korte-titel/NEWS.Rmd",
                             criterion = is_git_root),
       append = TRUE)
 
@@ -57,7 +57,7 @@ create_sfp(title = "titel van het protocol",
 
 write(x =  "- [2020.02](https://protocols.inbo.io/2020.02/nl/index.html)
   - Eerste nl versie van het protocol",  
-      file = find_root_file("src/thematic/0_generic/sfp-001_dummy2_nl/NEWS.Rmd",
+      file = find_root_file("src/thematic/0_generic/sfp-001-nl_dummy2/NEWS.Rmd",
                             criterion = is_git_root),
       append = TRUE)
 
@@ -69,16 +69,16 @@ create_sfp(title = "titel van het protocol",
            date = Sys.Date(), 
            reviewers = c("Voornaam Naam"), 
            file_manager = "Voornaam Naam", 
-           version_number = "2020.02",
+           version_number = "2020.03",
            theme = "generic",
            language = "en",
            from_docx = NULL,
            protocol_number = NULL, 
            render = FALSE)
 
-write(x =  "- [2020.02](https://protocols.inbo.io/2020.02/en/index.html)
+write(x =  "- [2020.03](https://protocols.inbo.io/2020.02/en/index.html)
   - Eerste engelstalige versie van het protocol",  
-      file = find_root_file("src/thematic/0_generic/sfp-001_dummy2_en/NEWS.Rmd",
+      file = find_root_file("src/thematic/0_generic/sfp-001-en_dummy2/NEWS.Rmd",
                             criterion = is_git_root),
       append = TRUE)
 
@@ -104,11 +104,37 @@ create_spp(title = "title",
 
 write(x =  "- [2021.01](https://protocols.inbo.io/2021.01/nl/index.html)
   - Eerste versie van het protocol",  
-      file = find_root_file("src/project/mne/spp-001_my-protocol_nl/NEWS.Rmd",
+      file = find_root_file("src/project/mne/spp-001-nl_my-protocol/NEWS.Rmd",
                             criterion = is_git_root),
       append = TRUE)
 
 protocolhelper:::render_release()
 
+
+# update protocol
+
+# make some change
+write(x =  "Dit protocol is afhankelijk van ...",  
+      file = find_root_file("src/thematic/4_vegetation/sfp-401-nl_korte-titel/01_afhankelijkheden.Rmd",
+                            criterion = is_git_root),
+      append = TRUE)
+
+# update version number
+indextext <- readLines(
+  con = find_root_file("src/thematic/4_vegetation/sfp-401-nl_korte-titel/index.Rmd",
+                       criterion = is_git_root))
+
+indextext[10] <- "  version_number: \"2021.02\""
+writeLines(text = indextext, 
+           con = find_root_file("src/thematic/4_vegetation/sfp-401-nl_korte-titel/index.Rmd",
+                                criterion = is_git_root))
+
+write(x =  "- [2021.02](https://protocols.inbo.io/2021.02/nl/index.html)
+  - Tweede versie van het protocol",  
+      file = find_root_file("src/thematic/4_vegetation/sfp-401-nl_korte-titel/NEWS.Rmd",
+                            criterion = is_git_root),
+      append = TRUE)
+
+protocolhelper:::render_release()
 
 
